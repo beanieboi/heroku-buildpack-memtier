@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+mkdir -p "$1/bin/"
+cp "bin/memtier_benchmark-$STACK" "$1/bin/memtier_benchmark"
+memtier_version=$(./bin/memtier_benchmark-$STACK --version 2>&1 | head -1 | awk '{ print $NF }')
+echo "-----> memtier-buildpack: Installed ${memtier_version} to app/bin"
+
+exit 0
